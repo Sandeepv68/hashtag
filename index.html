@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="Hashtag" content="HashTag Software Demo">
+<meta name="Sandeep Vattapparambil" content="Hashtag Software">
+<link rel="icon" type="image/png" href="icons/favicon.ico">
+<title>:: #HashTag ::</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+<!-- Custom CSS -->
+<link href="css/scrolling-nav.css" rel="stylesheet" type="text/css">
+<link href="css/login.css" rel="stylesheet" type="text/css">
+<!-- Toaster -->
+<link href="toastr/toastr.css" rel="stylesheet" type="text/css">
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header page-scroll">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#page-top">#HashTag</a> </div>
+    
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <ul class="nav navbar-nav">
+        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+        <li class="hidden"> </li>
+        <li class="page-scroll"> <a href="#about">About</a> </li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container --> 
+</nav>
+<section id="intro" class="intro-section">
+  <div class="container">
+    <div class="alert alert-info alert-dismissable col-md-10 col-md-offset-1" style="margin-bottom:35px;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong>Notice : </strong>Registrations are currently closed. Use email id as <strong>random@random.com</strong> and password as <strong>random</strong>. </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="page-scroll">
+          <div id="login" class="wrapper">
+            <form class="form-signin" method="POST" action="functions/login.php">
+              <h2 class="form-signin-heading">Please login</h2>
+              <input type="text" class="form-control" name="email" placeholder="Email Address" required autofocus />
+              <br />
+              <input type="password" class="form-control" name="password" placeholder="Password" required/>
+              <label class="checkbox" style="text-align:left">Remember me
+                <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe">
+              </label>
+              <button class="btn btn-lg btn-warning btn-block" type="submit">Login</button>
+              <!-- <a id="register" class="btn btn-lg btn-warning btn-block">Sign Up</a>-->
+            </form>
+          </div>
+          <div id="signup" class="wrapper" style="display:none;">
+            <form class="form-signin" action="register.php" method="POST">
+              <h2 class="form-signin-heading">Register</h2>
+              <input type="text" class="form-control" name="fullname" placeholder="Full Name" required autofocus />
+              <br />
+              <input id="username" type="text" class="form-control" name="username" placeholder="Email Address" required autofocus onChange="ajax()"/>
+              <br />
+              <input type="password" class="form-control" name="password1" placeholder="Password" required/>
+              <br />
+              <input type="password" class="form-control" name="password2" placeholder="Password again" required/>
+              <br />
+              <button class="btn btn-lg btn-success btn-block" type="submit">Register</button>
+              <a id="back" class="btn btn-lg btn-warning btn-block">back</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Core JavaScript Files --> 
+<script src="js/jquery-1.10.2.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.easing.min.js"></script> 
+
+<!-- Custom Theme JavaScript --> 
+<script src="js/scrolling-nav.js"></script> 
+<script type="text/javascript">
+	$('#register').click(function () {
+		$('#login').hide();
+		$('#signup').show();
+	});
+	$('#back').click(function () {
+		$('#login').show();
+		$('#signup').hide();
+	});
+</script> 
+<!-- Toaster --> 
+<script src="toastr/toastr.js"></script> 
+<script type="text/javascript">
+toastr.options = {
+				  "closeButton": true,
+				  "debug": false,
+				  "positionClass": "toast-bottom-full-width",
+				  "onclick": null,
+				  "showDuration": "300",
+				  "hideDuration": "1000",
+				  "timeOut": "5000",
+				  "extendedTimeOut": "5000",
+				  "showEasing": "swing",
+				  "hideEasing": "linear",
+				  "showMethod": "fadeIn",
+				  "hideMethod": "fadeOut"
+}
+function GetURLParameter(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec(location.search);
+    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+var trigger = GetURLParameter('q');
+var error = GetURLParameter('error');
+if(trigger.length > 0)
+{
+	toastr.warning("You have logged out!");
+}
+else if(error.length ==1)
+{
+	toastr.info("User info not found! please use above credentials !");
+}
+</script>
+</body>
+</html>
