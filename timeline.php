@@ -1,6 +1,6 @@
 <ul class="timeline">
 <?php
-$sql = "SELECT * FROM hashtag_post";
+$sql = "SELECT * FROM hashtag_post ORDER BY id DESC";
 $result = mysql_query($sql);
 while($row = mysql_fetch_array($result))
 	{
@@ -63,7 +63,7 @@ echo "<div class=\"timeline-panel\"><div><h6 class=\"hash2\">".$mystring['0']."<
 	echo    "<p><small class=\"text-muted\"><i class=\"glyphicon glyphicon-time\"></i> ".$row['date']."</small></p>";
 	echo  "</div>";
 	echo  "<div class=\"timeline-body\">";
-	echo    "<p> ".$row['post_data']."</p>";
+	echo    "<p>".$row['post_data']."</p>";
 	echo "<hr />";
 	echo  "<div class=\"btn-group\">";
 	echo  "<button type=\"button\" class=\"btn btn-primary btn-sm dropdown-toggle\" data-toggle=\"dropdown\">";

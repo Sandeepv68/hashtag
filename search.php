@@ -72,7 +72,6 @@ $date = date('Y-m-d H:i:s');
   <div class="container">
     <div class="row">
       <div class="col-lg-12">
-        <h1>#SearchResults</h1>
         <?php
 if(isset($_POST['tags']))
 {
@@ -83,6 +82,8 @@ if(isset($_POST['tags']))
 }
 $query="SELECT * FROM hashtag_post WHERE tag='$search_key'";
 $result_exec = mysql_query($query);
+ echo "<h1>#SearchResults</h1>";
+  echo "<hr />";
 while($rows = mysql_fetch_assoc($result_exec))
 {
 	echo "<div class=\"panel panel-info\">";
